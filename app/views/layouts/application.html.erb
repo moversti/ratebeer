@@ -9,10 +9,22 @@
 <body>
 
 <div class="navibar">
-  <%= link_to 'breweries', breweries_path %>
-  <%= link_to 'beers', beers_path %>
-  <%= link_to 'ratings', ratings_path %>
+  <%= link_to 'Breweries', breweries_path %>
+  <%= link_to 'Beers', beers_path %>
+  <%= link_to 'Ratings', ratings_path %>
+  <%= link_to 'Users', users_path%>
+  |
+  <% if not current_user.nil? %>
+    <%= link_to current_user.username, current_user%>
+    <%= link_to 'Rate a beer!', new_rating_path %>
+    <%= link_to 'Log Out', signout_path, method: :delete, data: { confirm: 'Really log out?' } %>
+  <% else %>
+    <%= link_to 'Sign Up', signup_path %>
+    <%= link_to 'Log In', signin_path %>
+  <% end %>
 </div>
+
+
 
 <%= yield %>
 

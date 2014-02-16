@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+<p>
+  Has made <%= @user.ratings.count %> ratings, average: <%= format '%.2f', @user.average_rating %>
+</p>
+
+<ul>
+  <% @user.ratings.each do |r| %>
+      <li> <%= r %> <%= link_to 'delete', r, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
